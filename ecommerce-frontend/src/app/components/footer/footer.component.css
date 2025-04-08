@@ -1,0 +1,161 @@
+.footer {
+  background-color: #000;
+  color: #fff;
+  padding: 40px 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer-wrapper {
+  max-width: 1600px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+/* Footer Section */
+.footer-section {
+  flex: 1 1 180px;
+  min-width: 180px;
+}
+
+.brand-name {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.slogan {
+  font-size: 15px;
+  color: #bbb;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+/* Social Icons */
+.socials {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.socials a {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ff4d4d;
+  color: white;
+  font-size: 14px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.socials a:hover {
+  background-color: #e60000;
+  transform: scale(1.1);
+}
+
+/* Footer Links */
+.footer-section h4 {
+  font-size: 15px;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+  color: #ccc;
+  font-size: 15px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+  color: #fff;
+}
+
+/* Newsletter */
+.subscribe-wrapper {
+  flex: 1 1 100%;
+  margin-top: 30px;
+}
+
+.subscribe-title {
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.subscribe {
+  display: flex;
+  gap: 8px;
+  max-width: 380px;
+}
+
+.subscribe input {
+  flex: 1;
+  padding: 8px 10px;
+  font-size: 15px;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+}
+
+.subscribe button {
+  background-color: #fff;
+  color: #000;
+  padding: 8px 12px;
+  border: none;
+  font-size: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.subscribe button:hover {
+  background-color: #eee;
+}
+
+/* 📜 Copyright Bar */
+.footer-bottom {
+  background-color: #111;
+  color: #aaa;
+  text-align: center;
+  font-size: 12px;
+  padding: 15px 0;
+  margin-top: 30px;
+  border-top: 1px solid #222;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-wrapper {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .subscribe {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .subscribe input,
+  .subscribe button {
+    width: 100%;
+  }
+}

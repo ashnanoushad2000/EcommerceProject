@@ -1,0 +1,19 @@
+<div class="confirmation-container">
+  <h1 class="brand-text">ASHCART</h1>
+  <h2>Email Confirmation</h2>
+
+  <!-- ✅ Success message -->
+  <div *ngIf="success" class="alert alert-success animated fadeIn">
+    <h4>🎉 Email confirmed successfully!</h4>
+    <p>Redirecting to login page...</p>
+  </div>
+
+  <!-- ❌ Error message -->
+  <div *ngIf="error" class="alert alert-danger animated fadeIn">
+    <h4>❌ Confirmation Failed</h4>
+    <p>This confirmation link is invalid or expired.</p>
+  </div>
+
+  <!-- 🎊 Confetti canvas (optional) -->
+  <canvas id="confetti-canvas" class="confetti-canvas"></canvas>
+</div>

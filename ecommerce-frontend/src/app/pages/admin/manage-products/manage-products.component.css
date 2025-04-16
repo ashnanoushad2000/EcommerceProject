@@ -1,0 +1,361 @@
+/* Container */
+.admin-page-container {
+    padding: 2rem;
+    background-color: #121212;
+    min-height: 100vh;
+    color: #f5f5f5;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  /* Title */
+  .admin-page-container h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  /* Main filter bar container */
+  .filter-bar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 12px 0;
+    flex-wrap: wrap;
+  }
+  
+  /* Match sizes for all fields */
+  .search-input,
+  .category-dropdown,
+  .add-product-btn {
+    height: 42px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid #333;
+  }
+  
+  /* Search Input */
+  .search-input {
+    width: 250px;
+    padding: 0 14px;
+    background-color: #121212;
+    color: #fff;
+  }
+  
+  /* Category Dropdown */
+  .category-dropdown {
+    width: 150px;
+    padding: 0 12px;
+    background-color: #121212;
+    color: #fff;
+  }
+  
+  /* Add Product Button */
+  .add-product-btn {
+    padding: 0 18px;
+    background-color: #2563eb;
+    color: white;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    white-space: nowrap;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-product-btn:hover {
+    background-color: #1e40af;
+  }
+  
+  /* Optional: Responsive Stack */
+  @media (max-width: 768px) {
+    .filter-bar {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    .search-input,
+    .category-dropdown,
+    .add-product-btn {
+      width: 100%;
+    }
+  }
+  
+  /* Plus icon for Add Product button */
+  .filter-bar .btn-success i,
+  .filter-bar .btn-success svg {
+    margin-right: 6px;
+    font-size: 16px;
+  }
+  
+  /* If you don't have an icon element */
+  .filter-bar .btn-success:not(:has(i)):not(:has(svg))::before {
+    content: "+";
+    margin-right: 6px;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 0;
+  }
+  
+  /* Fix for icons and SVGs */
+  .filter-bar .btn-success svg,
+  .filter-bar .btn-success i {
+    display: inline-flex;
+  }
+  
+  /* Media query for smaller screens */
+  @media (max-width: 768px) {
+    .filter-bar {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 12px;
+    }
+    
+    .filter-bar select {
+      width: 100%;
+    }
+  }
+
+  
+  /* Category Dropdown */
+  .filter-bar select {
+    width: 180px;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid #444;
+    background-color: #1a1a1a;
+    color: #fff;
+    font-size: 0.95rem;
+    outline: none;
+  }
+  
+  /* Add Product Button */
+  .filter-bar .btn-success {
+    padding: 11px 20px;
+    font-weight: 600;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background-color 0.3s;
+  }
+  
+  .filter-bar .btn-success:hover {
+    background-color: #1e40af;
+  }
+  
+  /* Table */
+  .table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    background: transparent;
+  }
+  
+  .table thead {
+    background-color: #1f1f1f;
+  }
+  
+  .table thead th {
+    color: #e0e0e0;
+    padding: 12px;
+    text-align: left;
+    font-size: 0.95rem;
+    border: none;
+  }
+  
+  .table tbody tr {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  .table td {
+    padding: 12px;
+    vertical-align: middle;
+    border: none;
+    font-size: 0.9rem;
+  }
+  
+  .table td img {
+    width: 50px;
+    height: auto;
+    border-radius: 6px;
+  }
+  
+  /* Action Buttons */
+  .btn-sm {
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 6px;
+  }
+  
+  .btn-primary {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    margin-right: 6px;
+  }
+  
+  .btn-primary:hover {
+    background-color: #2563eb;
+  }
+  
+  .btn-danger {
+    background-color: #ef4444;
+    color: white;
+    border: none;
+  }
+  
+  .btn-danger:hover {
+    background-color: #dc2626;
+  }
+  /* Form Grid */
+  /* Modal Form Grid */
+.modal-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 2rem;
+  }
+  
+  /* Each input block */
+  .modal-form-grid > div {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Label styling */
+  .modal-form-grid > div label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  
+  /* Input fields */
+  .modal-form-grid > div input {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 6px;
+    background-color: #111;
+    color: #fff;
+    border: 1px solid #444;
+  }
+  
+  /* Full width row (like Image URL) */
+  .modal-form-grid .full-width {
+    grid-column: span 2;
+  }
+  
+  /* Action Buttons Row */
+  .modal-form-grid .actions {
+    grid-column: span 2;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  
+  /* Optional: Make both buttons similar width */
+  .modal-form-grid .actions .btn {
+    padding: 10px 20px;
+    font-weight: 600;
+    min-width: 120px;
+    text-align: center;
+  }
+  
+  
+  /* Modal Overlay */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: #1e1e2f;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 600px;
+    max-width: 95%;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+    color: #f1f1f1;
+  }
+  
+  .modal-content h3 {
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+    font-size: 1.25rem;
+  }
+  
+  .modal-content form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 1.5rem;
+  }
+  
+  .modal-content label {
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    display: block;
+  }
+  
+  .modal-content input {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background-color: #111;
+    color: white;
+    font-size: 0.9rem;
+    outline: none;
+    margin-bottom: 0.25rem;
+  }
+  
+  .modal-content .btn {
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  
+  .modal-content .btn-secondary {
+    background-color: #6b7280;
+    color: white;
+    border: none;
+  }
+  
+  .modal-content .btn-secondary:hover {
+    background-color: #4b5563;
+  }
+  
+  @media (max-width: 768px) {
+    .filter-bar {
+      flex-direction: column;
+    }
+  
+    .modal-content {
+      width: 95%;
+    }
+  
+    .modal-content form {
+      grid-template-columns: 1fr;
+    }
+  }
+  

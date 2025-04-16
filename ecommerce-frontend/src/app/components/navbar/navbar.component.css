@@ -1,0 +1,184 @@
+/* 🌐 Main Navbar */
+.custom-navbar {
+  background-color: #ffffff;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1100;
+}
+
+/* 🔗 Logo + Toggle Container */
+.logo-toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* 🧾 Brand */
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #2c3e50;
+  text-decoration: none;
+  margin: 0;
+}
+
+/* 🍔 Hamburger Menu Icon */
+.menu-toggle {
+  font-size: 1.6rem;
+  color: #2c3e50;
+  cursor: pointer;
+  display: block;
+}
+
+/* 🔍 Search Input */
+.search-box {
+  border: 1px solid #ccc;
+  padding: 6px 10px;
+  border-radius: 20px;
+  outline: none;
+  font-size: 0.9rem;
+  width: 180px;
+  transition: border-color 0.2s ease;
+}
+
+.search-box:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+/* 👤 User & 🛒 Cart Icons */
+.icon-group {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-icon {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  cursor: pointer;
+  position: relative;
+}
+
+/* 🛒 Cart badge */
+.cart-wrapper {
+  position: relative;
+}
+
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background-color: #6f42c1;
+  color: white;
+  font-size: 0.7rem;
+  padding: 3px 6px;
+  border-radius: 50%;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+}
+
+/* 👤 Dropdown */
+.dropdown-menu {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  border-radius: 5px;
+  z-index: 1000;
+  min-width: 120px;
+}
+
+.dropdown-menu a {
+  text-decoration: none;
+  color: #2c3e50;
+  font-size: 0.9rem;
+  display: block;
+  margin: 4px 0;
+}
+
+.dropdown-menu a:hover {
+  color: #2563eb;
+}
+
+/* 📱 Sidebar */
+.sidebar-menu {
+  position: fixed;
+  top: 60px; /* Leave space for top navbar */
+  left: -250px;
+  width: 250px;
+  height: calc(100vh - 60px); /* Adjust height */
+  background-color: #ffffff;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: left 0.3s ease;
+  z-index: 1000;
+  overflow-y: auto; /* Allow scrolling if content overflows */
+}
+
+.sidebar-menu.active {
+  left: 0;
+}
+
+.sidebar-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-menu ul li a {
+  display: block;
+  padding: 15px 20px;
+  color: #333;
+  text-decoration: none;
+  border-bottom: 1px solid #eee;
+}
+
+.sidebar-menu ul li a:hover {
+  background-color: #f5f5f5;
+}
+
+.sidebar-menu ul li a.active {
+  border-left: 4px solid #2563eb;
+  background-color: #e8f0fe;
+}
+
+/* 🧼 Overlay */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 999;
+}
+
+.overlay.active {
+  display: block;
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .search-box {
+    display: none;
+  }
+
+  .icon-group {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}

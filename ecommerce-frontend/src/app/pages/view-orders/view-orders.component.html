@@ -1,0 +1,92 @@
+<!-- View Orders Container -->
+<div class="view-orders-container">
+  <h2 class="view-orders-title">
+    <i class="bi bi-bag-check"></i> Your Orders
+  </h2>
+
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+  <div *ngIf="orders.length === 0 && !errorMessage" class="error-message">
+    You have no orders yet.
+  </div>
+
+  <ng-container *ngFor="let order of orders">
+    <div *ngIf="order.orderProducts?.length > 0" class="order-card">
+      <!-- Header -->
+      <div class="order-header">
+        <div class="order-id">Order ID: {{ order.id }}</div>
+        <div class="order-status" [ngClass]="order.status.toLowerCase()">
+          {{ order.status.toUpperCase() }}
+        </div>
+      </div>
+
+      <!-- Meta Info -->
+      <div class="order-date">Date: {{ order.created_at | date: 'MMMM d, y' }}</div>
+      <div class="order-total">Total: £{{ order.total_price }}</div>
+
+      <!-- Products -->
+      <div class="order-products">
+        <div class="product-card" *ngFor="let op of order.orderProducts">
+          <img [src]="op.product.imageUrl" alt="Product Image" class="product-image" />
+          <div class="product-details">
+            <a [routerLink]="['/products', op.product.id]" class="product-name">
+              {{ op.product.name }}
+            </a>
+            <div class="product-price">£{{ op.product.price }} × {{ op.quantity }}</div>
+
+            <!-- Star Rating Display -->
+            <div class="product-rating">
+              <i
+                class="bi bi-star-fill text-warning"
+                *ngFor="let _ of createStars(op.product.rating)"
+              ></i>
+            </div>
+
+            <!-- Buttons -->
+            <div class="product-buttons">
+              <button class="rate-btn" (click)="openRating(op.product.id, op.product.name)">
+                Rate Product
+              </button>
+              <button class="reorder-btn" (click)="reorder(op.product)">Reorder</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="order-actions">
+        <button
+          *ngIf="order.status === 'Pending'"
+          class="cancel-btn"
+          (click)="cancelOrder(order.id)"
+        >
+          <i class="bi bi-x-circle"></i> Cancel Order
+        </button>
+        <button class="track-btn" [routerLink]="['/tracking', order.id]">
+          <i class="bi bi-truck"></i> Track Order
+        </button>
+      </div>
+    </div>
+  </ng-container>
+
+  <!-- Rating Modal -->
+  <div class="rating-modal-overlay" *ngIf="showRatingModal">
+    <div class="rating-modal">
+      <h4>Rate {{ selectedProductName }}</h4>
+
+      <div class="star-selection">
+        <i
+          class="bi bi-star-fill"
+          *ngFor="let star of [1, 2, 3, 4, 5]"
+          [ngClass]="{ 'selected': star <= selectedRating }"
+          (click)="selectRating(star)"
+        ></i>
+      </div>
+
+      <div class="modal-actions">
+        <button class="submit-btn" (click)="submitRating()">Submit</button>
+        <button class="close-btn" (click)="closeRating()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

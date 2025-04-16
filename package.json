@@ -1,0 +1,29 @@
+{
+  "name": "ecommerceproject",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "@angular/material": "^19.2.3",
+    "@auth0/angular-jwt": "^5.2.0",
+    "@nestjs/config": "^4.0.1",
+    "@nestjs/typeorm": "^11.0.0",
+    "bcryptjs": "^3.0.2",
+    "bootstrap": "^5.3.3",
+    "canvas-confetti": "^1.9.3",
+    "dotenv": "^16.4.7",
+    "mssql": "^11.0.1",
+    "ngx-toastr": "^19.0.0",
+    "typeorm": "^0.3.21"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "scripts": {
+    "start": "concurrently \"npm run start:dev --prefix backend\" \"npm run start --prefix ecommerce-frontend\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

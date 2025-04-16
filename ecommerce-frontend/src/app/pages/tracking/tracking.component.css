@@ -1,0 +1,204 @@
+/* 🌟 Main Container */
+.tracking-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  background-color: #fff;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* 📌 Heading */
+.tracking-title {
+  font-size: 26px;
+  font-weight: 600;
+  color: #2c2c2c;
+  margin-bottom: 30px;
+}
+
+/* 📋 Summary Info (Date, Status, Total) */
+.tracking-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 40px;
+  font-size: 16px;
+  color: #444;
+}
+
+.tracking-summary div {
+  flex: 1 1 250px;
+}
+
+.tracking-summary strong {
+  display: block;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 4px;
+}
+
+.status-green {
+  color: #34c759;
+  font-weight: bold;
+}
+
+/* 🚚 Timeline Section */
+.tracking-timeline h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #2c2c2c;
+  margin-bottom: 20px;
+}
+
+.timeline {
+  position: relative;
+  margin-left: 25px;
+  padding-left: 30px;
+  border-left: 3px solid #eee;
+}
+
+.timeline-step {
+  position: relative;
+  margin-bottom: 30px;
+  padding-left: 10px;
+  transition: all 0.3s ease;
+}
+
+.timeline-step .circle {
+  position: absolute;
+  left: -34px;
+  top: 0;
+  width: 16px;
+  height: 16px;
+  background-color: #fff;
+  border: 3px solid #ccc;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.timeline-step.done .circle {
+  background-color: #4a6cf7;
+  border-color: #4a6cf7;
+}
+
+.timeline-step.active .circle {
+  background-color: #fff;
+  border-color: #34c759;
+  box-shadow: 0 0 0 5px rgba(52, 199, 89, 0.3);
+}
+
+.timeline-step .timeline-content {
+  margin-left: 5px;
+}
+
+.step-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.step-time {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 4px;
+}
+
+.timeline-description {
+  font-size: 14px;
+  color: #666;
+}
+
+/* 🛒 Product Section */
+.tracking-products h3 {
+  margin: 50px 0 20px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #2c2c2c;
+}
+
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.product-card {
+  flex: 1 1 240px;
+  background-color: #fafafa;
+  border-radius: 10px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border: 1px solid #eaeaea;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.product-card img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.product-info {
+  flex: 1;
+}
+
+.product-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.product-qty,
+.product-price {
+  font-size: 14px;
+  color: #666;
+}
+
+/* 🔄 Loader & Error */
+.loading-spinner {
+  text-align: center;
+  font-size: 16px;
+  color: #777;
+  padding: 40px 0;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+  font-size: 16px;
+  margin-top: 40px;
+}
+
+/* 📱 Mobile Responsive */
+@media (max-width: 768px) {
+  .tracking-summary {
+    flex-direction: column;
+  }
+
+  .product-grid {
+    flex-direction: column;
+  }
+
+  .product-card {
+    flex-direction: row;
+  }
+
+  .tracking-title {
+    font-size: 22px;
+  }
+
+  .timeline {
+    margin-left: 20px;
+  }
+}

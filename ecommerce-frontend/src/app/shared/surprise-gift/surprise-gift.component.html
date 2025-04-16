@@ -1,0 +1,27 @@
+<div class="popup-overlay" *ngIf="visible" [ngClass]="{ 'fade-out': fadingOut }">
+    <div class="popup-box">
+      <span class="close-btn" (click)="closePopup()">×</span>
+  
+      <h2>Congrats!<br />You got a surprise gift!</h2>
+      <p class="subtext">Welcome to ASHCART — enjoy your bonus!</p>
+  
+      <div class="gift-box glowing">
+        <div class="gift-card">
+          🎁 {{ giftRevealed ? gift : '£ ??? + Mystery Surprise 🎁' }}
+        </div>
+      </div>
+  
+      <button class="reveal-btn" (click)="revealGift()">Check Surprise</button>
+  
+      <button
+        class="claim-btn"
+        [disabled]="!giftRevealed || fadingOut"
+        (click)="claimGift()"
+      >
+        Claim Now
+      </button>
+  
+      <canvas id="confetti-canvas"></canvas>
+    </div>
+  </div>
+  

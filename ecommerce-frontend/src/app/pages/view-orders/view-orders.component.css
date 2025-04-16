@@ -1,0 +1,514 @@
+.view-orders-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.view-orders-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #2c3e50;
+}
+
+.order-card {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.order-status {
+  font-size: 0.85rem;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.order-status.pending {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.order-status.cancelled {
+  background-color: #ffebee;
+  color: #c62828;
+  border: 1px solid #ef9a9a;
+}
+
+.order-status.completed {
+  background-color: #e3f2fd;
+  color: #1565c0;
+  border: 1px solid #90caf9;
+}
+
+.order-date,
+.order-total {
+  font-size: 0.9rem;
+  margin-top: 4px;
+  color: #666;
+}
+
+.order-products {
+  margin-top: 1rem;
+}
+
+.product-card {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  border-top: 1px solid #eee;
+  padding-top: 1rem;
+}
+
+.product-image {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+.product-name {
+  font-weight: 600;
+  color: #2c3e50;
+  text-decoration: none;
+}
+
+.product-price {
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+.product-rating i {
+  color: #ffc107;
+  font-size: 1rem;
+}
+
+.product-buttons {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.rate-btn,
+.reorder-btn {
+  padding: 5px 12px;
+  font-size: 0.8rem;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.rate-btn {
+  background-color: #f0ad4e;
+  color: white;
+}
+
+.rate-btn:hover {
+  background-color: #ec971f;
+}
+
+.reorder-btn {
+  background-color: #17a2b8;
+  color: white;
+}
+
+.reorder-btn:hover {
+  background-color: #138496;
+}
+
+.order-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.cancel-btn {
+  background-color: #dc3545;
+  color: white;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cancel-btn:hover {
+  background-color: #c82333;
+}
+
+.track-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.track-btn:hover {
+  background-color: #0069d9;
+}
+
+.error-message {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+/* ⭐ Rating Modal Overlay */
+.rating-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ⭐ Rating Modal Box */
+.rating-modal {
+  background: #fff;
+  padding: 30px 25px;
+  border-radius: 10px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.rating-modal h4 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+/* 🌟 Star Rating Display */
+.star-selection {
+  margin: 15px 0;
+}
+
+.star-selection i {
+  font-size: 24px;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.star-selection i.hovered,
+.star-selection i.selected {
+  color: #f0ad4e;
+}
+
+/* ⭐ Rating Modal Buttons */
+.rating-modal .modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.rating-modal button {
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: none;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.rating-modal .submit-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.rating-modal .submit-btn:hover {
+  background-color: #218838;
+}
+
+.rating-modal .cancel-btn {
+  background-color: #6c757d;
+  color: white;
+}
+
+.rating-modal .cancel-btn:hover {
+  background-color: #5a6268;
+}
+.view-orders-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.view-orders-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #2c3e50;
+}
+
+.order-card {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.order-status {
+  font-size: 0.85rem;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.order-status.pending {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.order-status.cancelled {
+  background-color: #ffebee;
+  color: #c62828;
+  border: 1px solid #ef9a9a;
+}
+
+.order-status.completed {
+  background-color: #e3f2fd;
+  color: #1565c0;
+  border: 1px solid #90caf9;
+}
+
+.order-date,
+.order-total {
+  font-size: 0.9rem;
+  margin-top: 4px;
+  color: #666;
+}
+
+.order-products {
+  margin-top: 1rem;
+}
+
+.product-card {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  border-top: 1px solid #eee;
+  padding-top: 1rem;
+}
+
+.product-image {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+.product-name {
+  font-weight: 600;
+  color: #2c3e50;
+  text-decoration: none;
+}
+
+.product-price {
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+.product-rating i {
+  color: #ffc107;
+  font-size: 1rem;
+}
+
+.product-buttons {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.rate-btn,
+.reorder-btn {
+  padding: 5px 12px;
+  font-size: 0.8rem;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.rate-btn {
+  background-color: #f0ad4e;
+  color: white;
+}
+
+.rate-btn:hover {
+  background-color: #ec971f;
+}
+
+.reorder-btn {
+  background-color: #17a2b8;
+  color: white;
+}
+
+.reorder-btn:hover {
+  background-color: #138496;
+}
+
+.order-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.cancel-btn {
+  background-color: #dc3545;
+  color: white;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cancel-btn:hover {
+  background-color: #c82333;
+}
+
+.track-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.track-btn:hover {
+  background-color: #0069d9;
+}
+
+.error-message {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+/* ⭐ Rating Modal Overlay */
+.rating-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ⭐ Rating Modal Box */
+.rating-modal {
+  background: #fff;
+  padding: 30px 25px;
+  border-radius: 10px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.rating-modal h4 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+/* 🌟 Star Rating Display */
+.star-selection {
+  margin: 15px 0;
+}
+
+.star-selection i {
+  font-size: 24px;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.star-selection i.hovered,
+.star-selection i.selected {
+  color: #f0ad4e;
+}
+
+/* ⭐ Rating Modal Buttons */
+.rating-modal .modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.rating-modal button {
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: none;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.rating-modal .submit-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.rating-modal .submit-btn:hover {
+  background-color: #218838;
+}
+
+.rating-modal .cancel-btn {
+  background-color: #6c757d;
+  color: white;
+}
+
+.rating-modal .cancel-btn:hover {
+  background-color: #5a6268;
+}

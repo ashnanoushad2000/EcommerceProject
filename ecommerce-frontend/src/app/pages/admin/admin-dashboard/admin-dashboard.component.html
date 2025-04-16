@@ -1,0 +1,153 @@
+<div class="main-content">
+  <!-- 👋 Welcome -->
+  <div class="welcome-section">
+    <h1><span class="wave">👋</span> Welcome Admin</h1>
+    <p>Here's what's happening with your store today</p>
+  </div>
+
+  <!-- 📊 Stats -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="info">
+        <h3>{{ totalProducts }}</h3>
+        <p>Total Products</p>
+      </div>
+      <div class="icon"><i class="bi bi-box-fill"></i></div>
+    </div>
+    <div class="stat-card">
+      <div class="info">
+        <h3>{{ totalOrders }}</h3>
+        <p>Total Orders</p>
+      </div>
+      <div class="icon"><i class="bi bi-bag-fill"></i></div>
+    </div>
+    <div class="stat-card">
+      <div class="info">
+        <h3>{{ totalUsers }}</h3>
+        <p>Total Users</p>
+      </div>
+      <div class="icon"><i class="bi bi-people-fill"></i></div>
+    </div>
+  </div>
+<!-- Sidebar with Bootstrap Icons -->
+<div class="sidebar">
+  <div class="sidebar-menu">
+    <div class="menu-item active"><i class="bi bi-house-fill"></i></div>
+    <div class="menu-item"><i class="bi bi-box-fill"></i></div>
+    <div class="menu-item"><i class="bi bi-bag-fill"></i></div>
+    <div class="menu-item"><i class="bi bi-people-fill"></i></div>
+    <div class="menu-item"><i class="bi bi-tags-fill"></i></div>
+    <div class="menu-item"><i class="bi bi-heart-fill"></i></div>
+    <div class="menu-item"><i class="bi bi-graph-up"></i></div>
+    <div class="menu-item"><i class="bi bi-gear-fill"></i></div>
+    <div class="menu-item"><i class="bi bi-question-circle-fill"></i></div>
+  </div>
+</div>
+  <!-- ⚙️ Action Buttons -->
+  <div class="action-buttons">
+    <a routerLink="/admin/manage-products" class="no-underline">
+      <button class="action-btn btn btn-primary">
+        <i class="bi bi-box-fill"></i> Manage Products
+      </button>
+    </a>
+    <a routerLink="/admin/manage-orders" class="no-underline">
+      <button class="action-btn btn btn-primary">
+        <i class="bi bi-bag-check-fill"></i> Manage Orders
+      </button>
+    </a>
+  </div>
+
+  <!-- 📈 Chart + Activity -->
+  <div class="dashboard-grid">
+    <div class="chart-container">
+      <div class="section-title">
+        <h2>Sales Overview</h2>
+        <a href="#" class="view-all">View Details</a>
+      </div>
+      <!-- ✅ Angular Chart Canvas -->
+      <div class="chart-wrapper">
+        <canvas
+        baseChart
+        [data]="barChartData"
+        [options]="barChartOptions"
+        [legend]="true"
+        chartType="bar"
+        class="chart-canvas"
+        height="250"
+      ></canvas>
+      
+      
+      </div>
+      
+
+    </div>
+
+    <div class="recent-activity">
+      <div class="section-title">
+        <h2>Recent Activity</h2>
+        <a href="#" class="view-all">View All</a>
+      </div>
+      <div class="activity-feed">
+        <div class="activity-item">
+          <div class="activity-icon"><i class="bi bi-person-plus-fill"></i></div>
+          <div class="activity-info">
+            <h4>New user registered</h4>
+            <p>15 minutes ago</p>
+          </div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-icon"><i class="bi bi-cart-check-fill"></i></div>
+          <div class="activity-info">
+            <h4>New order placed #ORD-5621</h4>
+            <p>2 hours ago</p>
+          </div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-icon"><i class="bi bi-chat-left-dots-fill"></i></div>
+          <div class="activity-info">
+            <h4>New review on "Wireless Earbuds"</h4>
+            <p>5 hours ago</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🧾 Recent Orders -->
+  <div class="recent-orders">
+    <div class="section-title">
+      <h2>Recent Orders</h2>
+      <a routerLink="/admin/manage-orders" class="view-all">View All Orders</a>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Customer</th>
+          <th>Date</th>
+          <th>Amount</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of recentOrders">
+          <td>#{{ order.id }}</td>
+          <td>{{ order.user?.name }}</td>
+          <td>{{ order.created_at | date: 'mediumDate' }}</td>
+          <td>&pound;{{ order.total_price }}</td>
+          <td>
+            <span class="order-status"
+              [ngClass]="{
+                'status-pending': order.status === 'Pending',
+                'status-processing': order.status === 'Processing',
+                'status-delivered': order.status === 'Delivered',
+                'status-cancelled': order.status === 'Cancelled'
+              }">
+              {{ order.status }}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

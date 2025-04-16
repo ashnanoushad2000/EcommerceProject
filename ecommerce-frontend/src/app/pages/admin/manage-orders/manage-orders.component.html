@@ -1,0 +1,63 @@
+<div class="orders-container">
+    <h2>📦 Manage Orders</h2>
+  
+    <!-- ✅ Export Button -->
+    <button class="btn-export" (click)="exportToCSV()">Export CSV</button>
+  
+    <table class="orders-table">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Customer</th>
+          <th>Total Price</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders">
+          <td>#{{ order.id }}</td>
+          <td>{{ order.user?.name || 'Guest' }}</td>
+          <td>&pound;{{ order.total_price }}</td>
+          <td>{{ order.created_at | date: 'mediumDate' }}</td>
+          
+          <!-- ✅ Inline Dropdown -->
+          <td>
+            <select
+              class="status-dropdown"
+              [value]="order.status"
+              (change)="onStatusChange(order.id, $event)"
+              [disabled]="order.status === 'Cancelled'"
+            >
+              <option value="Pending">Pending</option>
+              <option value="Processing">Processing</option>
+              <option value="Delivered">Delivered</option>
+              <option value="Cancelled">Cancelled</option>
+            </select>
+          </td>
+  
+          <!-- ✅ Actions -->
+          <td>
+            <button class="btn-view" (click)="openViewModal(order)">View</button>
+            <button class="btn-track" [routerLink]="['/tracking', order.id]">Track</button>
+            <button class="btn-cancel" *ngIf="order.status !== 'Cancelled'" (click)="cancelOrder(order.id)">Cancel</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <!-- ✅ View Modal -->
+  <div class="modal-overlay" *ngIf="selectedOrder">
+    <div class="modal-content">
+      <h3>Order Details - #{{ selectedOrder?.id }}</h3>
+      <ul>
+        <li *ngFor="let item of selectedOrder?.orderProducts">
+          {{ item.product?.name }} (x{{ item.quantity }}) - &pound;{{ item.product?.price }}
+        </li>
+      </ul>
+      <button class="btn-close" (click)="closeViewModal()">Close</button>
+    </div>
+  </div>
+  

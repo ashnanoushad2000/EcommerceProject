@@ -1,0 +1,192 @@
+<!-- 🟣 Hero Section -->
+<section class="hero">
+  <div class="hero-container">
+    <!-- Left Content -->
+    <div class="hero-left">
+      <div class="hero-tags">
+        <span>#WOMEN</span>
+        <span>#TRENDING</span>
+        <span>#SUMMERFIT</span>
+      </div>
+      <h1>UNLOCK</h1>
+      <h2>Your Style, Your Story</h2>
+      <p>Express yourself with curated looks that reflect your vibe and your journey.</p>
+      <div class="hero-promo">Flat 30% OFF — Limited Time Only</div>
+      <div class="hero-actions">
+        <a routerLink="/products" class="hero-btn">Shop Now</a>
+        <a routerLink="/trends" class="hero-btn btn-outline">Explore Trends</a>
+      </div>
+    </div>
+
+    <!-- Right Image Grid -->
+    <div class="hero-right">
+      <div class="hero-images">
+        <img src="https://images.unsplash.com/photo-1627292441194-0280c19e74e4" alt="Model 1" />
+        <img src="https://plus.unsplash.com/premium_photo-1661775820832-f971657b13f6" alt="Model 2" />
+        <img src="https://plus.unsplash.com/premium_photo-1713453494958-3eea0e0a67d3" alt="Model 3" />
+        <img src="https://images.unsplash.com/photo-1676591202069-35d34b10ff88" alt="Model 4" />
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- 🟣 Recommended Products Section -->
+<section *ngIf="recommendedProducts.length > 0" class="recommended-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Based on your shopping habits</h2>
+      <a *ngIf="recommendedProducts.length > 4" (click)="showAll = !showAll" class="view-all">
+        {{ showAll ? 'Show Less' : 'View All' }}
+      </a>
+    </div>
+
+    <div class="product-grid">
+      <div
+        class="recommended-card"
+        *ngFor="let product of (showAll ? recommendedProducts : recommendedProducts.slice(0, 4))"
+      >
+        <div class="recommended-badge">Recommended</div>
+        <img [src]="product.imageUrl" [alt]="product.name" />
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text">Category: {{ product.category }}</p>
+          <p class="card-text">Price: £{{ product.price }}</p>
+          <div class="rating">
+            <span *ngFor="let star of [1, 2, 3, 4, 5]">
+              <i
+                class="bi"
+                [class.bi-star-fill]="star <= product.rating"
+                [class.bi-star]="star > product.rating"
+              ></i>
+            </span>
+            <span class="rating-count">({{ product.ratingCount || 0 }})</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="add-to-cart-rounded" (click)="addToCart(product)">
+            <i class="bi bi-cart-plus-fill"></i> Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ✅ Featured In Brands -->
+<section class="trusted-brands">
+  <div class="container">
+    <p class="trusted-text">FEATURED IN</p>
+    <div class="brand-logos">
+      <img src="https://images.unsplash.com/photo-1715277998963-7949e2732583?w=600" alt="Nike">
+      <img src="https://t4.ftcdn.net/jpg/13/55/15/21/240_F_1355152185_9D6hTg82BFTyhblmvSmqTK6PU6nRfiFb.jpg" alt="Louis Vuitton">
+      <img src="https://t4.ftcdn.net/jpg/12/50/74/93/240_F_1250749358_o3t4QdRNLzlYuRJGWW63IZFUlmt7HC6n.jpg" alt="North Face">
+      <img src="https://t4.ftcdn.net/jpg/04/08/78/57/240_F_408785796_e1vPLeNwoHbdVDSrxFgwbRtIUxXaeNN9.jpg" alt="Zara">
+      <img src="https://t4.ftcdn.net/jpg/08/35/18/55/240_F_835185534_PdCfLe70Xuy1xRtQfkt5xnAR1BTbK5kb.jpg" alt="Prada">
+    </div>
+  </div>
+</section>
+
+<!-- 🧭 Shop by Category -->
+<section class="category-section">
+  <h2 class="section-title">Shop by Category</h2>
+  <div class="category-grid">
+    <a [routerLink]="['/products']" [queryParams]="{ category: 'Electronics' }" class="category-box">
+      <img src="https://images.pexels.com/photos/1054397/pexels-photo-1054397.jpeg" alt="Electronics" />
+      <span>Electronics</span>
+    </a>
+    <a [routerLink]="['/products']" [queryParams]="{ category: 'Home Decor' }" class="category-box">
+      <img src="https://images.pexels.com/photos/271743/pexels-photo-271743.jpeg" alt="Home Decor" />
+      <span>Home Decor</span>
+    </a>
+    <a [routerLink]="['/products']" [queryParams]="{ category: 'Fashion' }" class="category-box">
+      <img src="https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg" alt="Fashion" />
+      <span>Fashion</span>
+    </a>
+  </div>
+</section>
+
+<!-- 🩵 Style Section -->
+<section class="style-creation">
+  <div class="container style-content">
+    <div class="style-image">
+      <img src="https://images.unsplash.com/photo-1733683321694-458cefa326f7?w=600" alt="Style">
+    </div>
+    <div class="style-text">
+      <h2>LET'S CREATE YOUR</h2>
+      <p class="style-tagline">Own Style</p>
+      <p>Dress the part, seize the spotlight. Elevate your style with our latest collection — where fashion meets expression.</p>
+      <a routerLink="/products" class="btn btn-light">SHOP NOW</a>
+    </div>
+  </div>
+</section>
+
+<!-- 🧡 New Arrivals -->
+<section class="image-new-arrivals">
+  <div class="container">
+    <div class="section-header">
+      <h2>New Arrival</h2>
+      <a routerLink="/products" class="view-all">View All</a>
+    </div>
+    <div class="arrival-grid">
+      <div *ngFor="let arrival of newArrivals" class="arrival-card" [style.background-color]="arrival.bgColor">
+        <img [src]="arrival.image" [alt]="arrival.alt">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 💃 Summer Dress -->
+<section class="featured-product dark short-dress">
+  <div class="container featured-content">
+    <div class="featured-text">
+      <h2>BEAUTIFUL SHORT</h2>
+      <h3>Summer Dress</h3>
+      <p>Elegantly breezy, this short summer dress is a canvas of effortless charm under the sun's golden embrace.</p>
+      <a routerLink="/products" class="btn">SHOP NOW</a>
+    </div>
+    <div class="featured-gallery">
+      <img *ngFor="let image of shortDressImages" [src]="image.src" [alt]="image.alt">
+    </div>
+  </div>
+</section>
+
+<!-- 👖 Denim Jacket -->
+<section class="featured-product light">
+  <div class="container featured-content">
+    <div class="featured-text">
+      <h2>DASHING DENIM</h2>
+      <h3>Jacket</h3>
+      <p>Wrap yourself in timeless cool with a classic denim jacket, the versatile staple that effortlessly elevates any ensemble.</p>
+      <a routerLink="/products" class="btn btn-light">SHOP NOW</a>
+    </div>
+    <div class="featured-gallery">
+      <img *ngFor="let image of denimImages" [src]="image.src" [alt]="image.alt">
+    </div>
+  </div>
+</section>
+
+<!-- 🗣 Testimonials -->
+<section class="testimonials">
+  <div class="container">
+    <h2>CUSTOMER EXPERIENCE</h2>
+    <p class="section-description">Discover the stories behind the style. Our clients speak, and we listen. Dive into a tapestry of testimonials that echo the delight, satisfaction, and unique experiences our customers have encountered.</p>
+    <div class="testimonial-card">
+      <div class="testimonial-image">
+        <img [src]="testimonial.image" alt="Customer">
+      </div>
+      <div class="testimonial-content">
+        <q>{{ testimonial.quote }}</q>
+        <div class="testimonial-author">{{ testimonial.author }}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-surprise-gift
+  [visible]="giftVisible"
+  [gift]="gift"
+  (closed)="closeGiftPopup()">
+</app-surprise-gift>

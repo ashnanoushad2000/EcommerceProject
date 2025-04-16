@@ -1,0 +1,52 @@
+<div class="tracking-container" *ngIf="order">
+  <h2 class="tracking-title">Tracking Order #{{ order.id }}</h2>
+
+  <div class="tracking-summary">
+    <div><strong>Order Date:</strong> {{ order.created_at | date: 'mediumDate' }}</div>
+    <div><strong>Status:</strong>
+      <span [ngClass]="{ 'status-green': order.status === 'Pending' || order.status === 'In Transit' || order.status === 'Completed' }">
+        {{ order.status }}
+      </span>
+    </div>
+    
+    <div><strong>Total:</strong> £{{ order.total_price }}</div>
+  </div>
+
+  <!-- 🚚 Timeline -->
+  <div class="tracking-timeline">
+    <h3>Tracking Timeline</h3>
+    <div class="timeline">
+      <div
+        class="timeline-step"
+        *ngFor="let step of getTimelineSteps()"
+        [ngClass]="step.status"
+      >
+        <div class="circle"></div>
+        <div class="timeline-content">
+          <div class="step-title">{{ step.title }}</div>
+          <div class="step-time">{{ step.time | date: 'short' }}</div>
+          <div class="timeline-description">{{ step.description }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🛍️ Products -->
+  <div class="tracking-products" *ngIf="order.orderProducts?.length">
+    <h3>Order Items</h3>
+    <div class="product-grid">
+      <div class="product-card" *ngFor="let op of order.orderProducts">
+        <img [src]="op.product.imageUrl" alt="{{ op.product.name }}" />
+        <div class="product-info">
+          <div class="product-name">{{ op.product.name }}</div>
+          <div class="product-qty">Qty: {{ op.quantity }}</div>
+          <div class="product-price">£{{ op.product.price }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Loaders & Errors -->
+<div *ngIf="loading" class="loading-spinner">Loading...</div>
+<div *ngIf="errorMessage && !loading" class="error-message">{{ errorMessage }}</div>

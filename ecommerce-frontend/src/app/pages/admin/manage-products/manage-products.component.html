@@ -1,0 +1,106 @@
+<div class="admin-page-container">
+    <h2>🛠️ Manage Products</h2>
+  
+  <!-- 🔍 Filter Bar -->
+  <div class="filter-bar">
+    <!-- Search Input -->
+    <input
+      type="text"
+      class="search-input"
+      [(ngModel)]="searchText"
+      (input)="onSearchChange()"
+      placeholder="Search products..."
+    />
+  
+    <!-- Category Dropdown -->
+    <select
+      class="category-dropdown"
+      [(ngModel)]="selectedCategory"
+      (change)="onCategoryChange()"
+    >
+      <option value="All">All</option>
+      <ng-container *ngFor="let cat of categories">
+        <option [value]="cat">{{ cat }}</option>
+      </ng-container>
+    </select>
+  
+    <!-- Add Product Button -->
+    <button class="add-product-btn" (click)="openAddModal()">
+      <i class="bi bi-plus-lg"></i> Add Product
+    </button>
+  </div>
+  
+  
+  
+    <!-- 📦 Product Table -->
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Price (£)</th>
+          <th>Stock</th>
+          <th>Category</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of filteredProducts; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td><img [src]="product.imageUrl" alt="Image" /></td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.price }}</td>
+          <td>{{ product.stock }}</td>
+          <td>{{ product.category }}</td>
+          <td>
+            <button class="btn btn-sm btn-primary" (click)="openEditModal(product)">Edit</button>
+            <button class="btn btn-sm btn-danger" (click)="deleteProduct(product.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- 📝 Add/Edit Modal -->
+    <div class="modal-overlay" *ngIf="showModal">
+      <div class="modal-content">
+        <h3>{{ isEditMode ? 'Edit Product' : 'Add New Product' }}</h3>
+        <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="modal-form-grid">
+            <div>
+              <label>Product Name:</label>
+              <input formControlName="name" />
+            </div>
+          
+            <div>
+              <label>Category:</label>
+              <input formControlName="category" />
+            </div>
+          
+            <div>
+              <label>Price (£):</label>
+              <input formControlName="price" type="number" />
+            </div>
+          
+            <div>
+              <label>Stock:</label>
+              <input formControlName="stock" type="number" />
+            </div>
+          
+            <div class="full-width">
+              <label>Image URL:</label>
+              <input formControlName="imageUrl" />
+            </div>
+          
+            <div class="actions">
+              <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+              <button type="submit" class="btn btn-success">
+                {{ isEditMode ? 'Update' : 'Add Product' }}
+              </button>
+            </div>
+          </form>
+          
+          
+      </div>
+    </div>
+  </div>
+  
